@@ -8,11 +8,14 @@ import '@fontsource/roboto/700.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { APP_THEME } from '../../config';
+import { RootStoreProvider } from '../../services/stores';
 import { WeatherPage } from '../Weather/pages/WeatherPage';
 
 export const App = () => (
-  <ThemeProvider theme={APP_THEME}>
-    <CssBaseline enableColorScheme />
-    <WeatherPage />
-  </ThemeProvider>
+  <RootStoreProvider>
+    <ThemeProvider theme={APP_THEME}>
+      <CssBaseline enableColorScheme />
+      <WeatherPage />
+    </ThemeProvider>
+  </RootStoreProvider>
 );
