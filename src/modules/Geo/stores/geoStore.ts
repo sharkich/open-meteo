@@ -3,11 +3,12 @@ import { makeAutoObservable } from 'mobx';
 import { Nullable } from '../../../services/types';
 import { ILocation } from '../interfaces';
 
-export interface IWeatherStore {
+export interface IGeoStore {
   location: Nullable<ILocation>;
+  setLocation: (location: Nullable<ILocation>) => void;
 }
 
-export class WeatherStore implements IWeatherStore {
+export class GeoStore implements IGeoStore {
   private _location: Nullable<ILocation> = null;
 
   constructor() {

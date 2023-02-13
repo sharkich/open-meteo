@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { AppBar, Box, Container } from '@mui/material';
 
-import { SelectLocation } from '../../modules/Weather/components/SelectLocation/SelectLocation';
+import { SelectLocation } from '../../modules/Geo/components/SelectLocation/SelectLocation';
 
 export const AppTopBar: FC = () => (
   <AppBar position="static">

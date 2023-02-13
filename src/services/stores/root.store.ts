@@ -1,9 +1,9 @@
-import { IWeatherStore, WeatherStore } from '../../modules/Weather/stores/weather.store';
+import { IGeoStore, GeoStore } from '../../modules/Geo/stores/geoStore';
 
 export interface IRootStore {
-  readonly weatherStore: IWeatherStore;
+  readonly geoStore: IGeoStore;
 }
 
 export class RootStore {
-  readonly weatherStore = new WeatherStore();
+  readonly geoStore = new GeoStore();
 }

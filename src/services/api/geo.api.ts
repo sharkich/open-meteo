@@ -18,9 +18,19 @@ export interface IGeoDTO {
   timezone: string;
 }
 
-export const fetchGeo = async (name: string) => {
+export interface IGeoResponseDTO {
+  results: IGeoDTO[];
+  generationtime_ms: number;
+}
+
+export const FETCH_GEO_LOCATIONS_REQUEST_NAME = 'FETCH_GEO_LOCATIONS';
+
+export const fetchGeoLocations = async (name?: string) => {
+  if (!name) {
+    return null;
+  }
   const query = new URLSearchParams({ name });
-  const response = await axios.get<IGeoDTO>(`${URL}?${query}`);
+  const response = await axios.get<IGeoResponseDTO>(`${URL}?${query}`);
 
   return response.data;
 };
