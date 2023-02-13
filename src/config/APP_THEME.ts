@@ -35,11 +35,11 @@ export const APP_THEME = createTheme({
     // mode: 'dark',
     primary: {
       // main: teal['400']
-      main: lime.A700
+      main: orange.A700
     },
     secondary: {
       contrastText: 'white',
-      main: orange.A700
+      main: lime.A700
     },
     // divider: teal[900],
     // background: {
