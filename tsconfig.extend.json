@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/components": ["./X./components"],
+      "@/components/*": ["./X./components/*"],
+      "@/modules": ["./X./modules"],
+      "@/modules/*": ["./X./modules/*"],
+      "@/services": ["./X./services"],
+      "@/services/*": ["./X./services/*"],
+      "@/pages": ["./X./pages"],
+      "@/pages/*": ["./X./pages/*"],
+      "@/config": ["./X./config"],
+      "@/config/*": ["./X./config/*"]
+    }
+  }
+}
