@@ -24,6 +24,7 @@ export interface IWeatherDTO {
     rain_sum: string;
     showers_sum: string;
     snowfall_sum: string;
+    windspeed_10m_max: string;
   };
   daily: {
     time: string[];
@@ -37,6 +38,7 @@ export interface IWeatherDTO {
     rain_sum: number[];
     showers_sum: number[];
     snowfall_sum: number[];
+    windspeed_10m_max: number[];
   };
 }
 
@@ -50,7 +52,8 @@ const DAILY_DATA = [
   'precipitation_sum',
   'rain_sum',
   'showers_sum',
-  'snowfall_sum'
+  'snowfall_sum',
+  'windspeed_10m_max'
 ];
 
 interface Props {
