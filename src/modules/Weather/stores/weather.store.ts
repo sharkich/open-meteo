@@ -8,9 +8,17 @@ export interface IWeatherStore {
 }
 
 export class WeatherStore implements IWeatherStore {
-  location: Nullable<ILocation> = null;
+  private _location: Nullable<ILocation> = null;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  get location(): Nullable<ILocation> {
+    return this._location;
+  }
+
+  setLocation(location: Nullable<ILocation>) {
+    this._location = location;
   }
 }
