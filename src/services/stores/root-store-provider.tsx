@@ -1,23 +1,23 @@
 import { createContext, ReactNode, useContext } from 'react';
 
-import { RootStore } from './root.store';
-import { Undefined } from '../types';
+import { IRootStore, RootStore } from './root.store';
+import { isUndefined, Undefined } from '../types';
 
-let store: RootStore;
+let store: IRootStore;
 
-const StoreContext = createContext<Undefined<RootStore>>(undefined);
+const StoreContext = createContext<Undefined<IRootStore>>(undefined);
 StoreContext.displayName = 'RootStoreContext';
 
 export const useRootStore = () => {
   const context = useContext(StoreContext);
-  if (context === undefined) {
+  if (isUndefined(context)) {
     throw new Error('useRootStore must be used within RootStoreProvider');
   }
 
   return context;
 };
 
-const initializeStore = (): RootStore => {
+const initializeStore = (): IRootStore => {
   const _store = store ?? new RootStore();
 
   // For SSG and SSR always create a new store
