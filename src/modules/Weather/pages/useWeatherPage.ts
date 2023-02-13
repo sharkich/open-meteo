@@ -1,7 +1,7 @@
-import { useGeoStore } from '../../Geo/stores/useGeoStore';
+import { useLocationStore } from '../../Locations/stores/useLocationStore';
 
 export const useWeatherPage = () => {
-  const weatherStore = useGeoStore();
+  const weatherStore = useLocationStore();
   const { location } = weatherStore;
 
   return { location };

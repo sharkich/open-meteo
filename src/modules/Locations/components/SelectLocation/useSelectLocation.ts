@@ -1,16 +1,16 @@
 import { ChangeEventHandler, SyntheticEvent, useState } from 'react';
 
-import { IGeoDTO } from '../../../../services/api/geo.api';
-import { useLocationsList } from '../../hooks/useLocationsList';
-import { useGeoStore } from '../../stores/useGeoStore';
+import { IGeoDTO } from '../../../../services/api';
+import { useLocationsListApi } from '../../hooks';
+import { useLocationStore } from '../../stores/useLocationStore';
 
 export const useSelectLocation = () => {
   const [name, setName] = useState('');
   const [open, setOpen] = useState(false);
 
-  const weatherStore = useGeoStore();
+  const weatherStore = useLocationStore();
 
-  const loadingState = useLocationsList(name);
+  const loadingState = useLocationsListApi(name);
 
   const onClose = () => setOpen(false);
   const onOpen = () => setOpen(true);

@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite';
 
 import { useWeatherPage } from './useWeatherPage';
 import { AppLayout } from '../../../components';
+import { WeatherDays } from '../components/WeatherDays';
 
 export const WeatherPage: FC = observer(() => {
   const { location } = useWeatherPage();
@@ -12,7 +13,8 @@ export const WeatherPage: FC = observer(() => {
   return (
     <AppLayout>
       <Typography variant="h1">Weather Forecast</Typography>
-      <Typography variant="h2">Location... ({location?.name})</Typography>
+      <Typography variant="h2">{location?.name ?? 'Please select the location'}</Typography>
+      <WeatherDays />
     </AppLayout>
   );
 });

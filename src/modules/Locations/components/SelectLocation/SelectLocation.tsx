@@ -31,7 +31,7 @@ export const SelectLocation: FC = () => {
           onChange={onInputChange}
         />
       )}
-      sx={{ width: 300 }}
+      sx={{ mt: 1, width: 300 }}
       onChange={onLocationChange}
       onClose={onClose}
       onOpen={onOpen}

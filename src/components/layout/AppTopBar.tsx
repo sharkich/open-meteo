@@ -2,12 +2,12 @@ import { FC } from 'react';
 
 import { AppBar, Box, Container } from '@mui/material';
 
-import { SelectLocation } from '../../modules/Geo/components/SelectLocation/SelectLocation';
+import { SelectLocation } from '../../modules/Locations/components/SelectLocation/SelectLocation';
 
 export const AppTopBar: FC = () => (
-  <AppBar position="static">
+  <AppBar position="static" sx={{ height: 72 }}>
     <Container maxWidth="xl">
-      <Box sx={{ display: { md: 'flex', xs: 'none' }, flexGrow: 1 }}>
+      <Box>
         <SelectLocation />
       </Box>
     </Container>

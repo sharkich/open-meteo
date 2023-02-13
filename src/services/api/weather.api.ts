@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { Nullable } from '../types';
+
 const URL = 'https://api.open-meteo.com/v1/forecast';
 
 export interface IWeatherDTO {
@@ -57,14 +59,19 @@ interface Props {
   timezone: string;
 }
 
-export const fetchWeather = async ({ latitude, longitude, timezone }: Props) => {
+export const fetchWeather = async (props: Nullable<Props>) => {
+  if (!props) {
+    return null;
+  }
+  const { latitude, longitude, timezone } = props;
   const query = new URLSearchParams({
     daily: DAILY_DATA.join(','),
     latitude: `${latitude}`,
     longitude: `${longitude}`,
     timezone
   });
-  const response = await axios.get<IWeatherDTO>(`${URL}?${query}`);
+  const queryString = query.toString().replace(/%2C/g, ',');
+  const response = await axios.get<IWeatherDTO>(`${URL}?${queryString}`);
 
   return response.data;
 };

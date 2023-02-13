@@ -1,9 +1,9 @@
-import { IGeoStore, GeoStore } from '../../modules/Geo/stores/geoStore';
+import { ILocationStore, LocationStore } from '../../modules/Locations/stores/LocationStore';
 
 export interface IRootStore {
-  readonly geoStore: IGeoStore;
+  readonly locationStore: ILocationStore;
 }
 
 export class RootStore {
-  readonly geoStore = new GeoStore();
+  readonly locationStore = new LocationStore();
 }
