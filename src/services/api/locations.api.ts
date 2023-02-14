@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-import { LOCATIONS_LS_KEY } from '../../config';
+import { DEFAULT_LOCATION_LS_KEY, LOCATIONS_LS_KEY } from '../../config';
 import { ILocation } from '../../modules/Locations/interfaces';
+import { Nullable } from '../types';
 
 const URL = 'https://geocoding-api.open-meteo.com/v1/search';
 
@@ -40,3 +41,14 @@ export const saveLocations = (locations: ILocation[]) =>
   localStorage.setItem(LOCATIONS_LS_KEY, JSON.stringify(locations));
 
 export const getLocations = (): ILocation[] => JSON.parse(localStorage.getItem(LOCATIONS_LS_KEY) ?? '[]');
+
+export const saveDefaultLocation = (location: Nullable<ILocation>) => {
+  if (location) {
+    return localStorage.setItem(DEFAULT_LOCATION_LS_KEY, JSON.stringify(location));
+  }
+
+  return localStorage.removeItem(DEFAULT_LOCATION_LS_KEY);
+};
+
+export const getDefaultLocation = (): Nullable<ILocation> =>
+  JSON.parse(localStorage.getItem(DEFAULT_LOCATION_LS_KEY) ?? 'null');

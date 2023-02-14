@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { getLocations } from '../../../services/api';
+import { getDefaultLocation, getLocations } from '../../../services/api';
 import { useLocationsStore } from '../stores/useLocationsStore';
 
 export const useInitLocations = () => {
@@ -8,5 +8,6 @@ export const useInitLocations = () => {
 
   useEffect(() => {
     locationsStore.setLocations(getLocations());
+    locationsStore.setLocation(getDefaultLocation());
   }, [locationsStore]);
 };
