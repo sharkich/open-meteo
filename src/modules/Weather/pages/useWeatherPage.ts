@@ -1,8 +1,11 @@
-import { useLocationStore } from '../../Locations/stores/useLocationStore';
+import { useInitLocations } from '../../Locations/hooks';
+import { useLocationsStore } from '../../Locations/stores/useLocationsStore';
 
 export const useWeatherPage = () => {
-  const weatherStore = useLocationStore();
-  const { location } = weatherStore;
+  const locationsStore = useLocationsStore();
+  const { location } = locationsStore;
+
+  useInitLocations();
 
   return { location };
 };

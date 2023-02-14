@@ -1,9 +1,9 @@
-import { ILocationStore, LocationStore } from '../../modules/Locations/stores/LocationStore';
+import { ILocationsStore, LocationsStore } from '../../modules/Locations/stores/LocationsStore';
 
 export interface IRootStore {
-  readonly locationStore: ILocationStore;
+  readonly locationsStore: ILocationsStore;
 }
 
 export class RootStore {
-  readonly locationStore = new LocationStore();
+  readonly locationsStore = new LocationsStore();
 }

@@ -1,8 +1,8 @@
-import { useLocationStore } from '../../../Locations/stores/useLocationStore';
+import { useLocationsStore } from '../../../Locations/stores/useLocationsStore';
 import { useWeatherListApi } from '../../hooks';
 
 export const useWeatherDays = () => {
-  const { location } = useLocationStore();
+  const { location } = useLocationsStore();
 
   return useWeatherListApi(location);
 };

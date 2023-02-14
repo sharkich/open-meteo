@@ -1,8 +1,9 @@
 import { useQuery } from 'react-query';
 
-import { FETCH_GEO_LOCATIONS_REQUEST_NAME, fetchWeather } from '../../../services/api';
+import { WEATHER_REQUEST_NAME } from '../../../config';
+import { fetchWeather } from '../../../services/api';
 import { Nullable } from '../../../services/types';
 import { ILocation } from '../../Locations/interfaces';
 
 export const useWeatherListApi = (location: Nullable<ILocation>) =>
-  useQuery([FETCH_GEO_LOCATIONS_REQUEST_NAME, location], async () => await fetchWeather(location));
+  useQuery([WEATHER_REQUEST_NAME, location], async () => await fetchWeather(location));

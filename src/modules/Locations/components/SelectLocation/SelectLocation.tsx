@@ -22,15 +22,26 @@ const Input = styled(TextField)(({ theme }) => ({
 }));
 
 export const SelectLocation: FC = () => {
-  const { data, name, open, onLocationChange, onInputChange, onClose, onOpen, isLoading } = useSelectLocation();
+  const {
+    name,
+    open,
+    onLocationChange,
+    onInputChange,
+    onClose,
+    onOpen,
+    isLoading,
+    getOptionLabel,
+    isOptionEqualToValue,
+    options
+  } = useSelectLocation();
 
   return (
     <Autocomplete
-      getOptionLabel={option => option.name}
-      isOptionEqualToValue={(option, value) => option.name === value.name}
+      getOptionLabel={getOptionLabel}
+      isOptionEqualToValue={isOptionEqualToValue}
       loading={isLoading}
       open={open}
-      options={data?.results ?? []}
+      options={options}
       renderInput={params => (
         <Input
           {...params}
