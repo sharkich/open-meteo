@@ -8,6 +8,7 @@ export interface ILocationsStore {
   setLocation: (location: Nullable<ILocation>) => void;
   locations: ILocation[];
   setLocations: (locations: ILocation[]) => void;
+  addLocation: (location: Nullable<ILocation>) => void;
 }
 
 export class LocationsStore implements ILocationsStore {

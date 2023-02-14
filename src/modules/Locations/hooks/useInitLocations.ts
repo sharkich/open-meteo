@@ -8,6 +8,8 @@ export const useInitLocations = () => {
 
   useEffect(() => {
     locationsStore.setLocations(getLocations());
-    locationsStore.setLocation(getDefaultLocation());
+    const defaultLocation = getDefaultLocation();
+    locationsStore.setLocation(defaultLocation);
+    locationsStore.addLocation(defaultLocation);
   }, [locationsStore]);
 };
