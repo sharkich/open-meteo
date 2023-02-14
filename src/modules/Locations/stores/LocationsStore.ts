@@ -9,6 +9,7 @@ export interface ILocationsStore {
   locations: ILocation[];
   setLocations: (locations: ILocation[]) => void;
   addLocation: (location: Nullable<ILocation>) => void;
+  removeLocation: (location: ILocation) => void;
 }
 
 export class LocationsStore implements ILocationsStore {
@@ -45,5 +46,9 @@ export class LocationsStore implements ILocationsStore {
       return;
     }
     this._locations.push(location);
+  }
+
+  removeLocation(location: ILocation) {
+    this._locations = this._locations.filter(({ name }) => name !== location.name);
   }
 }

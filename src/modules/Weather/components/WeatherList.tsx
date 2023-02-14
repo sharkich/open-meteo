@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Container } from '@mui/material';
+import { Grid } from '@mui/material';
 
 import { WeatherDay } from './WeatherDay';
 import { IWeatherDTO } from '../../../services/api';
@@ -17,10 +17,10 @@ export const WeatherList: FC<Props> = ({ weather }) => {
   }
 
   return (
-    <Container sx={{ display: 'flex' }}>
+    <Grid container spacing={2}>
       {weather.daily.time.map((day, index) => (
         <WeatherDay key={day} {...mapDayToCard(weather, index)} />
       ))}
-    </Container>
+    </Grid>
   );
 };

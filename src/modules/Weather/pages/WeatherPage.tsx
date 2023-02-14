@@ -5,7 +5,8 @@ import { observer } from 'mobx-react-lite';
 
 import { useWeatherPage } from './useWeatherPage';
 import { AppLayout } from '../../../components';
-import { LocationsTabs } from '../../Locations/components/LocationsTabs/LocationsTabs';
+import { LocationsTabs } from '../../Locations/components/LocationsTabs';
+import { RemoveLocation } from '../../Locations/components/RemoveLocation';
 import { WeatherDays } from '../components/WeatherDays';
 
 export const WeatherPage: FC = observer(() => {
@@ -14,7 +15,16 @@ export const WeatherPage: FC = observer(() => {
   return (
     <AppLayout>
       <Typography variant="h1">Weather Forecast</Typography>
-      <Typography variant="h2">{location?.name ?? 'Please select the location'}</Typography>
+      <Typography sx={{ alignItems: 'center', display: 'flex' }} variant="h2">
+        {location ? (
+          <>
+            <RemoveLocation />
+            {location.name}
+          </>
+        ) : (
+          <>Please select the location</>
+        )}
+      </Typography>
       <LocationsTabs />
       <WeatherDays />
     </AppLayout>

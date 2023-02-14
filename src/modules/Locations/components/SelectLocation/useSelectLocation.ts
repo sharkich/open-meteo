@@ -1,6 +1,6 @@
 import { ChangeEventHandler, SyntheticEvent, useState } from 'react';
 
-import { ILocationDTO, saveDefaultLocation, saveLocations } from '../../../../services/api';
+import { saveDefaultLocation, saveLocations } from '../../../../services/api';
 import { useLocationsListApi } from '../../hooks';
 import { ILocation } from '../../interfaces';
 import { useLocationsStore } from '../../stores/useLocationsStore';
@@ -17,7 +17,7 @@ export const useSelectLocation = () => {
   const onClose = () => setOpen(false);
   const onOpen = () => setOpen(true);
 
-  const onLocationChange = (_: SyntheticEvent, value: ILocationDTO | null) => {
+  const onLocationChange = (_: SyntheticEvent, value: ILocation | null) => {
     locationsStore.setLocation(value);
     saveLocations(locations);
     saveDefaultLocation(location);
@@ -25,15 +25,16 @@ export const useSelectLocation = () => {
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = event => setName(`${event.target.value}`);
 
-  const getOptionLabel = (_location: ILocationDTO) => _location.name ?? `${_location.id}` ?? `${Math.random()}`;
+  const getOptionLabel = (_location: ILocation) => _location.name ?? `${Math.random()}`;
 
-  const isOptionEqualToValue = (option: ILocationDTO, value: ILocation) => option.name === value.name;
+  const isOptionEqualToValue = (option: ILocation, value: ILocation) => option.name === value.name;
 
   const options = locationsLoadingState.data?.results ?? [];
 
   return {
     getOptionLabel,
     isOptionEqualToValue,
+    location,
     name,
     onClose,
     onInputChange,

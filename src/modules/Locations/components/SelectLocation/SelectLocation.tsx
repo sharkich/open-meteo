@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { Autocomplete, CircularProgress, TextField } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
+import { observer } from 'mobx-react-lite';
 
 import { useSelectLocation } from './useSelectLocation';
 
@@ -21,9 +22,10 @@ const Input = styled(TextField)(({ theme }) => ({
   width: 400
 }));
 
-export const SelectLocation: FC = () => {
+export const SelectLocation: FC = observer(() => {
   const {
     name,
+    location,
     open,
     onLocationChange,
     onInputChange,
@@ -60,9 +62,10 @@ export const SelectLocation: FC = () => {
         />
       )}
       sx={{ mt: 1, width: 300 }}
+      value={location}
       onChange={onLocationChange}
       onClose={onClose}
       onOpen={onOpen}
     />
   );
-};
+});
