@@ -1,8 +1,25 @@
 import { FC } from 'react';
 
 import { Autocomplete, CircularProgress, TextField } from '@mui/material';
+import { styled, alpha } from '@mui/material/styles';
 
 import { useSelectLocation } from './useSelectLocation';
+
+const Input = styled(TextField)(({ theme }) => ({
+  '& label': {
+    color: theme.palette.common.white
+  },
+  '& label.Mui-focused': {
+    color: theme.palette.common.white
+  },
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25)
+  },
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  borderRadius: theme.shape.borderRadius,
+  position: 'relative',
+  width: 400
+}));
 
 export const SelectLocation: FC = () => {
   const { data, name, open, onLocationChange, onInputChange, onClose, onOpen, isLoading } = useSelectLocation();
@@ -15,7 +32,7 @@ export const SelectLocation: FC = () => {
       open={open}
       options={data?.results ?? []}
       renderInput={params => (
-        <TextField
+        <Input
           {...params}
           InputProps={{
             ...params.InputProps,
