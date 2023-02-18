@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { APP_THEME } from '../../config';
 import { RootStoreProvider } from '../../services/stores';
-import { WeatherPage } from '../Weather/pages/WeatherPage';
+import { GamePage } from '../game';
 
 export const App = () => {
   const queryClient = useMemo(() => new QueryClient(), []);
@@ -20,7 +20,7 @@ export const App = () => {
       <RootStoreProvider>
         <ThemeProvider theme={APP_THEME}>
           <CssBaseline enableColorScheme />
-          <WeatherPage />
+          <GamePage />
         </ThemeProvider>
       </RootStoreProvider>
     </QueryClientProvider>

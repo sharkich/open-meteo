@@ -1,9 +1,9 @@
-import { ILocationsStore, LocationsStore } from '../../modules/Locations/stores/LocationsStore';
+import { GameStore, IGameStore } from '../../modules/game/stores';
 
 export interface IRootStore {
-  readonly locationsStore: ILocationsStore;
+  readonly gameStore: IGameStore;
 }
 
 export class RootStore {
-  readonly locationsStore = new LocationsStore();
+  readonly gameStore = new GameStore();
 }
