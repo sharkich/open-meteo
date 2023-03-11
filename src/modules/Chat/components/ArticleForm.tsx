@@ -4,6 +4,7 @@ import { Box, Button, Paper, TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import { MuiChipsInput } from 'mui-chips-input';
 
+import { Editor } from '../../../components/Editor';
 import { IArticleFormValues } from '../interfaces';
 
 interface Props {
@@ -74,18 +75,8 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
           onChange={formik.handleChange}
         />
       </Box>
-      <Box sx={{ m: 1 }}>
-        <TextField
-          fullWidth
-          multiline
-          id="content"
-          label="Content"
-          name="content"
-          type="text"
-          value={formik.values.content}
-          variant="outlined"
-          onChange={formik.handleChange}
-        />
+      <Box sx={{ m: 1, p: 1 }}>
+        <Editor content={formik.values.content} onChange={formik.handleChange} />
       </Box>
       <Box sx={{ m: 1 }}>
         <TextField
@@ -101,8 +92,8 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
         />
       </Box>
 
-      <Box>
-        <MuiChipsInput value={formik.values.tags} onChange={formik.handleChange} />
+      <Box sx={{ m: 1 }}>
+        <MuiChipsInput label="Tags" value={formik.values.tags} onChange={formik.handleChange} />
       </Box>
 
       <Box sx={{ m: 1 }}>
