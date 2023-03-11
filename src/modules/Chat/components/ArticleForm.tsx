@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 
 import { Box, Button, Paper, TextField } from '@mui/material';
 import { useFormik } from 'formik';
@@ -6,6 +6,7 @@ import { MuiChipsInput } from 'mui-chips-input';
 
 import { Editor } from '../../../components/Editor';
 import { IArticleFormValues } from '../interfaces';
+import { mapAlias } from '../maps';
 
 interface Props {
   content: string;
@@ -13,6 +14,8 @@ interface Props {
 }
 
 export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
+  const [chips, setChips] = useState<string[]>([]);
+
   const formik = useFormik({
     initialValues: {
       alias: '',
@@ -23,9 +26,14 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
       title: ''
     },
     onSubmit: values => {
-      onSubmit(values);
+      onSubmit({ ...values, tags: chips });
     }
   });
+
+  const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    formik.handleChange(event);
+    formik.setFieldValue('alias', mapAlias(event.target.value));
+  };
 
   return (
     <Paper
@@ -48,7 +56,7 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
           type="text"
           value={formik.values.title}
           variant="outlined"
-          onChange={formik.handleChange}
+          onChange={handleTitleChange}
         />
       </Box>
       <Box sx={{ m: 1 }}>
@@ -93,7 +101,7 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
       </Box>
 
       <Box sx={{ m: 1 }}>
-        <MuiChipsInput label="Tags" value={formik.values.tags} onChange={formik.handleChange} />
+        <MuiChipsInput label="Tags" value={chips} onChange={setChips} />
       </Box>
 
       <Box sx={{ m: 1 }}>
