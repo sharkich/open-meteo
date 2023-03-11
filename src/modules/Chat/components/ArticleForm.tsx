@@ -6,7 +6,7 @@ import { MuiChipsInput } from 'mui-chips-input';
 
 import { Editor } from '../../../components/Editor';
 import { IArticleFormValues } from '../interfaces';
-import { mapAlias } from '../maps';
+import { mapAlias, mapTag } from '../maps';
 
 interface Props {
   content: string;
@@ -26,7 +26,7 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
       title: ''
     },
     onSubmit: values => {
-      onSubmit({ ...values, tags: chips });
+      onSubmit({ ...values, tags: chips.map(mapTag) });
     }
   });
 
@@ -84,7 +84,10 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
         />
       </Box>
       <Box sx={{ m: 1, p: 1 }}>
-        <Editor content={formik.values.content} onChange={formik.handleChange} />
+        <Editor
+          content={formik.values.content}
+          onChange={async value => await formik.setFieldValue('content', value)}
+        />
       </Box>
       <Box sx={{ m: 1 }}>
         <TextField
@@ -104,7 +107,7 @@ export const ArticleForm: FC<Props> = ({ content, onSubmit }) => {
         <MuiChipsInput label="Tags" value={chips} onChange={setChips} />
       </Box>
 
-      <Box sx={{ m: 1 }}>
+      <Box sx={{ m: 1, p: 1 }}>
         <Button color="secondary" type="submit" variant="contained">
           Save
         </Button>
